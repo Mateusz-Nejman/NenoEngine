@@ -1,9 +1,5 @@
 #pragma once
-#include "Engine.h"
-#include "Primitives.h"
-#include "Texture.h"
-#include "Keyboard.h"
-#include "Mouse.h"
+#include "Neno.h"
 
 namespace neno
 {
@@ -11,39 +7,46 @@ namespace neno
 		public Engine
 	{
 		Texture* simpleTexture;
-		Texture* simpleTexture1;
 		int x, y;
 	public:
 		TestEngine()
 		{
 			x = 0;
 			y = 320;
-			char basePath[255] = "";
-			char basePath1[255] = "";
-			std::cout << _fullpath(basePath, "image.png", sizeof(basePath));
-			std::cout << _fullpath(basePath1, "image.bmp", sizeof(basePath1));
-			simpleTexture = new Texture(_fullpath(basePath, "image.png", sizeof(basePath)));
-			simpleTexture1 = new Texture(_fullpath(basePath1, "image.bmp", sizeof(basePath1)));
+			simpleTexture = new Texture(Utils::FilePath("Content/image.png"));
 		}
 
 		void Update()
 		{
-			if(Keyboard::IsPressed('a'))
+			if (Keyboard::IsDown(NENO_KEY_UP))
+				y += 5;
+
+			if (Keyboard::IsDown(NENO_KEY_DOWN))
+				y -= 5;
+
+			if (Keyboard::IsDown(NENO_KEY_LEFT))
+				x -= 5;
+
+			if (Keyboard::IsDown(NENO_KEY_RIGHT))
 				x += 5;
 
-			if (Mouse::LeftPressed())
-				y += 1;
+			if (Keyboard::IsDown(' '))
+			{
+				x += 5;
+				y -= 5;
+			}
+
+			if (Keyboard::IsPressed('a'))
+				x += 20;
 		}
 
 		void Render()
 		{
-			Color color(255, 0, 0);
-			Primitives::DrawRectangle(0, 0, 32, 32, color);
+			Color color1(0, 255, 128);
+			Color color2(0, 128, 255);
 			simpleTexture->Draw(x, y, 32, 32);
-			Primitives::DrawRectangle(32, 0, 32, 32, color);
-			simpleTexture->Draw(32, 32, 32, 32);
-			Primitives::DrawTriangle(0, 0, 256, 256, 256, 0, color);
-			
+			Primitives::DrawRectangle(10, 530, 100, 20, color1);
+			Primitives::DrawTriangle(110, 600, 110, 480, 200, 540, color2);
 		}
 
 		void Resize(int width, int height)

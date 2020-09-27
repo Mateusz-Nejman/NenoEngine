@@ -2,22 +2,69 @@
 
 namespace neno
 {
-	int Keyboard::key_pressed[256];
+	int Keyboard::key_pressed[512];
+	int Keyboard::old_key_pressed[512];
+
 	void Keyboard::Initialize()
 	{
-		for (int a = 0; a < 256; a++)
+		for (int a = 0; a < 512; a++)
+		{
 			key_pressed[a] = 0;
+			old_key_pressed[a] = 0;
+		}
 	}
 
-	void Keyboard::ProcessChar(char _char, int value)
+	void Keyboard::AfterUpdate()
 	{
-		int charId = (int)_char;
-		key_pressed[charId] = value;
+		for (int a = 0; a < 512; a++)
+		{
+			old_key_pressed[a] = key_pressed[a];
+		}
 	}
 
-	bool Keyboard::IsPressed(char _char)
+	void Keyboard::ProcessChar(int key, int value)
 	{
-		int charId = (int)_char;
-		return key_pressed[charId] == 1;
+		key_pressed[key] = value;
+	}
+
+	bool Keyboard::IsDown(int key)
+	{
+		return key_pressed[key] == 1;
+	}
+
+	bool Keyboard::IsUp(int key)
+	{
+		return key_pressed[key] == 0;
+	}
+
+	bool Keyboard::IsPressed(int key)
+	{
+		return key_pressed[key] == 1 && old_key_pressed[key] == 0;
+	}
+
+	bool Keyboard::IsReleased(int key)
+	{
+		return key_pressed[key] == 0 && old_key_pressed[key] == 1;
+	}
+
+	bool Keyboard::IsShift()
+	{
+		int mod = glutGetModifiers();
+
+		return mod == GLUT_ACTIVE_SHIFT;
+	}
+
+	bool Keyboard::IsCtrl()
+	{
+		int mod = glutGetModifiers();
+
+		return mod == GLUT_ACTIVE_CTRL;
+	}
+
+	bool Keyboard::IsAlt()
+	{
+		int mod = glutGetModifiers();
+
+		return mod == GLUT_ACTIVE_ALT;
 	}
 }

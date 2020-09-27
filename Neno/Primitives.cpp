@@ -1,6 +1,5 @@
 #include "Primitives.h"
 
-
 namespace neno
 {
 	void Primitives::DrawRectangle(int x, int y, int width, int height, Color color)

@@ -1,5 +1,5 @@
 #include "Mouse.h"
-#include <iostream>
+
 namespace neno
 {
 	int Mouse::mouse_data[5];
@@ -14,7 +14,8 @@ namespace neno
 
 	void Mouse::ProcessClick(int button, int state, int x, int y)
 	{
-		mouse_data[button] = state;
+		if(button >= 0)
+			mouse_data[button] = state;
 		mouse_data[3] = x;
 		mouse_data[4] = y;
 	}

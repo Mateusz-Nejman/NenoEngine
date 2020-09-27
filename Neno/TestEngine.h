@@ -2,6 +2,8 @@
 #include "Engine.h"
 #include "Primitives.h"
 #include "Texture.h"
+#include "Keyboard.h"
+#include "Mouse.h"
 
 namespace neno
 {
@@ -10,9 +12,12 @@ namespace neno
 	{
 		Texture* simpleTexture;
 		Texture* simpleTexture1;
+		int x, y;
 	public:
 		TestEngine()
 		{
+			x = 0;
+			y = 320;
 			char basePath[255] = "";
 			char basePath1[255] = "";
 			std::cout << _fullpath(basePath, "image.png", sizeof(basePath));
@@ -23,23 +28,21 @@ namespace neno
 
 		void Update()
 		{
+			if(Keyboard::IsPressed('a'))
+				x += 5;
 
+			if (Mouse::LeftPressed())
+				y += 1;
 		}
 
 		void Render()
 		{
 			Color color(255, 0, 0);
 			Primitives::DrawRectangle(0, 0, 32, 32, color);
-			simpleTexture->Draw(0, 32, 32, 32);
+			simpleTexture->Draw(x, y, 32, 32);
 			Primitives::DrawRectangle(32, 0, 32, 32, color);
 			simpleTexture->Draw(32, 32, 32, 32);
-			/*for (int x = 0; x < 4; x++)
-			{
-				for (int y = 0; y < 4; y++)
-				{
-					simpleTexture->Draw(x*32, y*32, 32, 32);
-				}
-			}*/
+			Primitives::DrawTriangle(0, 0, 256, 256, 256, 0, color);
 			
 		}
 

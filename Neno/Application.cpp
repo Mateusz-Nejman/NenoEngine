@@ -28,8 +28,37 @@ namespace neno
         Render();
     }
 
+    void Application::Update()
+    {
+        mainEngine->Update();
+    }
+
+    void Application::Loop()
+    {
+        Update();
+        Render();
+        glutPostRedisplay();
+    }
+
+    void Application::ProcessKeyboard(unsigned char _char, int x, int y)
+    {
+        Keyboard::ProcessChar(_char, 1);
+    }
+
+    void Application::ProcessKeyboardReset(unsigned char _char, int x, int y)
+    {
+        Keyboard::ProcessChar(_char, 0);
+    }
+
+    void Application::ProcessMouse(int button, int state, int x, int y)
+    {
+        Mouse::ProcessClick(button, state, x, y);
+    }
+
     void Application::Start(Engine* engine, int argc, char* argv[])
     {
+        Keyboard::Initialize();
+        Mouse::Initialize();
         if (engine == nullptr)
         {
             std::cout << "Engine cannot be null!" << std::endl;
@@ -48,8 +77,11 @@ namespace neno
         glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);
         glutInitWindowSize(800, 600);
         glutCreateWindow("Neno engine tests");
-        glutDisplayFunc(Render);
+        glutDisplayFunc(Loop);
         glutReshapeFunc(Resize);
+        glutKeyboardFunc(ProcessKeyboard);
+        glutKeyboardUpFunc(ProcessKeyboardReset);
+        glutMouseFunc(ProcessMouse);
         glutMainLoop();
     }
 }

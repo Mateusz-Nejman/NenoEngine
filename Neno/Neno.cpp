@@ -9,7 +9,6 @@ using namespace neno;
 int main(int argc, char* argv[])
 {
     std::cout << "Hello World!\n";
-
     Application::mainEngine = nullptr;
     TestEngine engine;
     Application::Start(&engine, argc, argv);

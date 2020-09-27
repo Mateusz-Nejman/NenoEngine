@@ -6,17 +6,12 @@ namespace neno
     Engine* Application::mainEngine = nullptr;
     void Application::Render()
     {
-        Color bufferColor(100, 149, 237);
+        Color bufferColor = Color::CornflowerBlue;
         glClearColor(bufferColor.r, bufferColor.g, bufferColor.b, 1.0);
         glClear(GL_COLOR_BUFFER_BIT);
-        glMatrixMode(GL_MODELVIEW);
-        glEnable(GL_TEXTURE_2D);
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
         glLoadIdentity();
         glOrtho(0, 800, 0, 600, -1, 1);
         mainEngine->Render();
-
-        glFlush();
         glutSwapBuffers();
         //TODO Debug info
     }
@@ -90,7 +85,7 @@ namespace neno
     void Application::StartWindow(int argc, char* argv[])
     {
         glutInit(&argc, argv);
-        glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);
+        glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_RGBA);
         glutInitWindowSize(800, 600);
         glutCreateWindow("Neno engine tests");
         glutDisplayFunc(Loop);

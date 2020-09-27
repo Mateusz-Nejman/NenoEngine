@@ -42,11 +42,10 @@ namespace neno
 
 		void Render()
 		{
-			Color color1(0, 255, 128);
-			Color color2(0, 128, 255);
 			simpleTexture->Draw(x, y, 32, 32);
-			Primitives::DrawRectangle(10, 530, 100, 20, color1);
-			Primitives::DrawTriangle(110, 600, 110, 480, 200, 540, color2);
+			simpleTexture->Draw(128, 128, 64, 64);
+			Primitives::DrawRectangle(10, 530, 100, 20, Color::Transparent);
+			Primitives::DrawTriangle(110, 600, 110, 480, 200, 540, Color::Red);
 		}
 
 		void Resize(int width, int height)

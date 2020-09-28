@@ -11,7 +11,7 @@ namespace neno
 	public:
 		TestEngine();
 
-		void Update();
+		void Update(float framesPerSecond);
 
 		void Render();
 

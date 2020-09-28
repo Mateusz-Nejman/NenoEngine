@@ -157,6 +157,8 @@ namespace neno
 		Color(double r, double g, double b, double a = 1.0);
 
 		Color();
+
+		Color* Clone();
 	};
 }
 

@@ -7,6 +7,7 @@ namespace neno
 		public Engine
 	{
 		Texture* simpleTexture;
+		Sprite* simpleSprite;
 		int x, y;
 	public:
 		TestEngine();

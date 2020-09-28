@@ -154,6 +154,7 @@
     <ClCompile Include="Mouse.cpp" />
     <ClCompile Include="Neno.cpp" />
     <ClCompile Include="Primitives.cpp" />
+    <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="TestEngine.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="Utils.cpp" />
@@ -167,6 +168,7 @@
     <ClInclude Include="Mouse.h" />
     <ClInclude Include="Neno.h" />
     <ClInclude Include="Primitives.h" />
+    <ClInclude Include="Sprite.h" />
     <ClInclude Include="TestEngine.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="Utils.h" />

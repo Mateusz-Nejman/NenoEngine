@@ -171,4 +171,9 @@ namespace neno
 		this->a = 1;
 	}
 
+
+	Color* Color::Clone()
+	{
+		return new Color(this->r, this->g, this->b, this->a);
+	}
 }

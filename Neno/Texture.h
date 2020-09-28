@@ -14,6 +14,7 @@ namespace neno
 	private:
 		GLuint textureId;
 		BYTE* texture;
+		bool isPNG;
 	public:
 		int width;
 		int height;

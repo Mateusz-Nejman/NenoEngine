@@ -10,5 +10,6 @@
 #include "Primitives.h"
 #include "Texture.h"
 #include "Utils.h"
+#include "Sprite.h"
 
 #endif

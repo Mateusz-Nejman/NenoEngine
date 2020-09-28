@@ -28,9 +28,9 @@ namespace neno
 		textureId = idTest;
 	}
 
-	void Texture::Draw(int x, int y, int width, int height)
+	void Texture::Draw(int x, int y, int width, int height, Color color)
 	{
-		glColor3d(Color::White.r, Color::White.g, Color::White.b);
+		glColor4d(color.r, color.g, color.b, color.a);
 
 		glBindTexture(GL_TEXTURE_2D, textureId);
 		if(isPNG)

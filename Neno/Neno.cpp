@@ -10,7 +10,7 @@ int main(int argc, char* argv[])
 {
     std::cout << "Hello World!\n";
     TestEngine engine;
-    ApplicationConfig config(1024, 768, false, Color::CornflowerBlue);
+    ApplicationConfig config(1024, 768, true, Color::CornflowerBlue);
     Application::Start(&engine, &config, argc, argv);
     system("PAUSE");
     return 0;

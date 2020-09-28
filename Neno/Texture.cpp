@@ -9,6 +9,9 @@ namespace neno
 
 		if (format == FIF_UNKNOWN)
 			format = FreeImage_GetFIFFromFilename(path);
+
+		isPNG = format == FIF_PNG;
+
 		FIBITMAP* image = FreeImage_Load(format, path);
 
 		if (image == nullptr)
@@ -30,7 +33,10 @@ namespace neno
 		glColor3d(Color::White.r, Color::White.g, Color::White.b);
 
 		glBindTexture(GL_TEXTURE_2D, textureId);
-		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, this->width, this->height, 0, GL_RGB, GL_UNSIGNED_BYTE, texture);
+		if(isPNG)
+			glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, this->width, this->height, 0, GL_RGBA, GL_UNSIGNED_BYTE, texture);
+		else
+			glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, this->width, this->height, 0, GL_RGB, GL_UNSIGNED_BYTE, texture);
 		glEnable(GL_TEXTURE_2D);
 		glBegin(GL_QUADS);
 		glTexCoord2d(0.0, 0.0);

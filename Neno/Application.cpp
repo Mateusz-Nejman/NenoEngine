@@ -26,7 +26,6 @@ namespace neno
 
     void Application::Resize(int width, int height)
     {
-        glutReshapeWindow(currentConfig->screenWidth, currentConfig->screenHeight);
         Render();
     }
 
@@ -117,6 +116,8 @@ namespace neno
         glutMotionFunc(ProcessMouseMove);
         glutPassiveMotionFunc(ProcessMouseMove);
         glutMouseFunc(ProcessMouse);
+        if (currentConfig->allowFullscreen)
+            glutFullScreen();
         glutMainLoop();
     }
 }

@@ -14,11 +14,14 @@ namespace neno
     class Application
     {
     public:
-        static Engine* mainEngine;
-        static ApplicationConfig* currentConfig;
         static void Start(Engine* _engine, ApplicationConfig* config, int argc, char* argv[]);
 
     private:
+        static Engine* mainEngine;
+        static ApplicationConfig* currentConfig;
+        static int frames;
+        static int timebase;
+        static float framesPerSecond;
         static void StartWindow(int argc, char* argv[]);
         static void Update();
         static void Render();

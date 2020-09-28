@@ -4,6 +4,9 @@ namespace neno
 {
     Engine* Application::mainEngine = nullptr;
     ApplicationConfig* Application::currentConfig = nullptr;
+    int Application::frames = 0;
+    int Application::timebase = 0;
+    float Application::framesPerSecond = 0.0f;
 
     void Application::Render()
     {
@@ -29,14 +32,23 @@ namespace neno
 
     void Application::Update()
     {
-        mainEngine->Update();
+        mainEngine->Update(framesPerSecond);
     }
 
     void Application::Loop()
     {
+        frames++;
+        int time = glutGet(GLUT_ELAPSED_TIME);
         Update();
         Render();
         Keyboard::AfterUpdate();
+
+        if (time - timebase > 1000)
+        {
+            framesPerSecond = frames * 1000.0 / (float)(time - timebase);
+            timebase = time;
+            frames = 0;
+        }
         glutPostRedisplay();
     }
 

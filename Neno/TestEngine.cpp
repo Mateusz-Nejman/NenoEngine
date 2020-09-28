@@ -1,4 +1,5 @@
 #include "TestEngine.h"
+#include <iostream>
 
 namespace neno
 {
@@ -9,8 +10,9 @@ namespace neno
 		simpleTexture = new Texture(Utils::FilePath("Content/image.bmp"));
 	}
 
-	void TestEngine::Update()
+	void TestEngine::Update(float framesPerSecond)
 	{
+		std::cout << framesPerSecond << std::endl;
 		if (Keyboard::IsDown(NENO_KEY_UP))
 			y += 5;
 

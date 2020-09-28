@@ -12,7 +12,7 @@ namespace neno
 
 	}
 
-	void Engine::Update()
+	void Engine::Update(float framesPerSecond)
 	{
 
 	}

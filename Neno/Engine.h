@@ -6,7 +6,7 @@ namespace neno
 	class Engine
 	{
 	public:
-		virtual void Update();
+		virtual void Update(float framesPerSecond);
 
 		virtual void Render();
 

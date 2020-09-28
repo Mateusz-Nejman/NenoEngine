@@ -8,37 +8,48 @@ namespace neno
 		x = 0;
 		y = 320;
 		simpleTexture = new Texture(Utils::FilePath("Content/image.bmp"));
+		simpleSprite = new Sprite(simpleTexture);
+		simpleSprite->originX = 16;
+		simpleSprite->originY = 16;
+		simpleSprite->color = Color::Red.Clone();
+		simpleSprite->scaleX = 2;
+		simpleSprite->scaleY = 1.5;
 	}
 
 	void TestEngine::Update(float framesPerSecond)
 	{
-		std::cout << framesPerSecond << std::endl;
 		if (Keyboard::IsDown(NENO_KEY_UP))
-			y += 5;
+			simpleSprite->y += 5;
 
 		if (Keyboard::IsDown(NENO_KEY_DOWN))
-			y -= 5;
+			simpleSprite->y -= 5;
 
 		if (Keyboard::IsDown(NENO_KEY_LEFT))
-			x -= 5;
+			simpleSprite->x -= 5;
 
 		if (Keyboard::IsDown(NENO_KEY_RIGHT))
-			x += 5;
+			simpleSprite->x += 5;
 
 		if (Keyboard::IsDown(' '))
 		{
-			x += 5;
-			y -= 5;
+			simpleSprite->x += 5;
+			simpleSprite->y -= 5;
 		}
 
 		if (Keyboard::IsPressed('a'))
-			x += 20;
+			simpleSprite->x += 20;
+
+		if (Keyboard::IsPressed('q'))
+			simpleSprite->color->r = 0;
+
+		if (Keyboard::IsPressed('w'))
+			simpleSprite->angle += 45;
 	}
 
 	void TestEngine::Render()
 	{
-		simpleTexture->Draw(x, y, 32, 32);
-		simpleTexture->Draw(128, 128, 64, 64);
+		simpleSprite->Draw();
+		simpleTexture->Draw(128, 128, 32, 32);
 		Primitives::DrawRectangle(10, 530, 100, 20, Color::Transparent);
 		Primitives::DrawTriangle(110, 600, 110, 480, 200, 540, Color::Red);
 	}

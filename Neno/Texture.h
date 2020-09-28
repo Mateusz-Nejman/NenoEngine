@@ -21,7 +21,7 @@ namespace neno
 		int pixel_size;
 		Texture(const char* path);
 
-		void Draw(int x, int y, int width, int height);
+		void Draw(int x, int y, int width, int height, Color color = Color::White);
 	};
 }
 

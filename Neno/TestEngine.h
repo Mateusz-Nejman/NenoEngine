@@ -13,7 +13,7 @@ namespace neno
 		{
 			x = 0;
 			y = 320;
-			simpleTexture = new Texture(Utils::FilePath("Content/image.png"));
+			simpleTexture = new Texture(Utils::FilePath("Content/image.bmp"));
 		}
 
 		void Update()

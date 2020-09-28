@@ -35,33 +35,24 @@ namespace neno
 			GLuint idTest;
 			glGenTextures(1, &idTest);
 			textureId = idTest;
-			
-			std::cout << "textureId for " << path << ":" << idTest << std::endl;
 		}
 
 		void Draw(int x, int y, int width, int height)
 		{
-			glColor4d(Color::White.r, Color::White.g, Color::White.b, Color::White.a);
+			glColor3d(Color::White.r, Color::White.g, Color::White.b);
 			
 			glBindTexture(GL_TEXTURE_2D, textureId);
-			//glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_DECAL);
-			glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_BGRA_EXT, GL_UNSIGNED_BYTE, (GLvoid*)texture);
-			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-			//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP);
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP);
-			//
-		glEnable(GL_TEXTURE_2D);
+			glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, this->width, this->height, 0, GL_RGB, GL_UNSIGNED_BYTE, texture);
+			glEnable(GL_TEXTURE_2D);
 			glBegin(GL_QUADS);
 			glTexCoord2d(0.0, 0.0);
-			glVertex3d(x, y, 0.0);
+			glVertex2d(x, y);
 			glTexCoord2d(1.0, 0.0);
-			glVertex3d(x+width, y, 0.0);
+			glVertex2d(x + width, y);
 			glTexCoord2d(1.0, 1.0);
-			glVertex3d(x+width, y+height, 0.0);
+			glVertex2d(x + width, y + height);
 			glTexCoord2d(0.0, 1.0);
-			glVertex3d(x, y+height, 0.0);
+			glVertex2d(x, y + height);
 			glEnd();
 			glDisable(GL_TEXTURE_2D);
 			glFlush();

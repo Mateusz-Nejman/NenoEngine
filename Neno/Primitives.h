@@ -1,6 +1,9 @@
-#pragma once
+#ifndef PRIMITIVES_H
+#define PRIMITIVES_H
+
 #include <GL/glut.h>
 #include "Color.h"
+
 namespace neno
 {
 	class Primitives
@@ -11,3 +14,5 @@ namespace neno
 	};
 
 }
+
+#endif

@@ -1,12 +1,13 @@
 #include "Application.h"
-#include "Color.h"
 
 namespace neno
 {
     Engine* Application::mainEngine = nullptr;
+    ApplicationConfig* Application::currentConfig = nullptr;
+
     void Application::Render()
     {
-        Color bufferColor = Color::CornflowerBlue;
+        Color bufferColor = currentConfig->clearBufferColor;
         glClearColor(bufferColor.r, bufferColor.g, bufferColor.b, 1.0);
         glClear(GL_COLOR_BUFFER_BIT);
         glLoadIdentity();
@@ -14,7 +15,7 @@ namespace neno
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-        glOrtho(0, 800, 0, 600, -1, 1);
+        glOrtho(0, currentConfig->screenWidth, 0, currentConfig->screenHeight, -1, 1);
         mainEngine->Render();
         glutSwapBuffers();
         //TODO Debug info
@@ -22,7 +23,7 @@ namespace neno
 
     void Application::Resize(int width, int height)
     {
-        glutReshapeWindow(800, 600);
+        glutReshapeWindow(currentConfig->screenWidth, currentConfig->screenHeight);
         Render();
     }
 
@@ -69,7 +70,7 @@ namespace neno
         ProcessMouse(-1, 0, x, y);
     }
 
-    void Application::Start(Engine* engine, int argc, char* argv[])
+    void Application::Start(Engine* engine, ApplicationConfig* config, int argc, char* argv[])
     {
         if (engine == nullptr)
         {
@@ -83,6 +84,9 @@ namespace neno
         delete mainEngine;
         mainEngine = engine;
 
+        delete currentConfig;
+        currentConfig = config;
+
         StartWindow(argc, argv);
     }
 
@@ -90,7 +94,7 @@ namespace neno
     {
         glutInit(&argc, argv);
         glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_RGBA);
-        glutInitWindowSize(800, 600);
+        glutInitWindowSize(currentConfig->screenWidth, currentConfig->screenHeight);
         glutCreateWindow("Neno engine tests");
         glutDisplayFunc(Loop);
         glutReshapeFunc(Resize);

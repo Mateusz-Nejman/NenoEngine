@@ -1,4 +1,6 @@
-#pragma once
+#ifndef UTILS_H
+#define UTILS_H
+
 #include <stdlib.h>
 
 namespace neno
@@ -11,3 +13,4 @@ namespace neno
 	};
 }
 
+#endif

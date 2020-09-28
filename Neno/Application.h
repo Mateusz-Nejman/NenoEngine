@@ -1,7 +1,11 @@
+#ifndef APPLICATION_H
+#define APPLICATION_H
+
 #include <GL/glut.h>
 #include <iostream>
-#include "Engine.h"
+#include "ApplicationConfig.h"
 #include "Color.h"
+#include "Engine.h"
 #include "Keyboard.h"
 #include "Mouse.h"
 
@@ -11,7 +15,8 @@ namespace neno
     {
     public:
         static Engine* mainEngine;
-        static void Start(Engine* _engine, int argc, char* argv[]);
+        static ApplicationConfig* currentConfig;
+        static void Start(Engine* _engine, ApplicationConfig* config, int argc, char* argv[]);
 
     private:
         static void StartWindow(int argc, char* argv[]);
@@ -27,3 +32,5 @@ namespace neno
         static void ProcessMouseMove(int x, int y);
     };
 }
+
+#endif // !APPLICATION_H

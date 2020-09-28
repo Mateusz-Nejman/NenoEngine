@@ -1,4 +1,6 @@
-#pragma once
+#ifndef KEYBOARD_H
+#define KEYBOARD_H
+
 #include <GL/glut.h>
 
 #define NENO_KEY_F1 257
@@ -32,16 +34,12 @@
 #define NENO_KEY_RCTRL 371
 #define NENO_KEY_RALT 372
 
-
-
-
-using namespace std;
 namespace neno
 {
 	class Keyboard
 	{
 	private:
-		
+
 	public:
 		static int key_pressed[512];
 		static int old_key_pressed[512];
@@ -58,3 +56,4 @@ namespace neno
 	};
 }
 
+#endif

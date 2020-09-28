@@ -146,4 +146,29 @@ namespace neno
 	Color Color::Yellow(255, 255, 0, 255);
 	Color Color::YellowGreen(154, 205, 50, 255);
 
+
+	Color::Color(int r, int g, int b, int a)
+	{
+		this->r = (1.0 / 255.0) * (double)r;
+		this->g = (1.0 / 255.0) * (double)g;
+		this->b = (1.0 / 255.0) * (double)b;
+		this->a = (1.0 / 255.0) * (double)a;
+	}
+
+	Color::Color(double r, double g, double b, double a)
+	{
+		this->r = r;
+		this->g = g;
+		this->b = b;
+		this->a = a;
+	}
+
+	Color::Color()
+	{
+		this->r = 0;
+		this->g = 0;
+		this->b = 0;
+		this->a = 1;
+	}
+
 }

@@ -1,4 +1,6 @@
-#pragma once
+#ifndef COLOR_H
+#define COLOR_H
+
 namespace neno
 {
 	class Color
@@ -150,22 +152,12 @@ namespace neno
 
 		double r, g, b, a;
 
-		Color(int r, int g, int b, int a = 255)
-		{
-			this->r = (1.0 / 255.0) * (double)r;
-			this->g = (1.0 / 255.0) * (double)g;
-			this->b = (1.0 / 255.0) * (double)b;
-			this->a = (1.0 / 255.0) * (double)a;
-		}
+		Color(int r, int g, int b, int a = 255);
 
-		Color(double r, double g, double b, double a = 1.0)
-		{
-			this->r = r;
-			this->g = g;
-			this->b = b;
-			this->a = a;
-		}
+		Color(double r, double g, double b, double a = 1.0);
+
+		Color();
 	};
-
-
 }
+
+#endif

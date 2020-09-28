@@ -1,4 +1,6 @@
-#pragma once
+#ifndef MOUSE_H
+#define MOUSE_H
+
 #include <GL/glut.h>
 
 namespace neno
@@ -17,3 +19,4 @@ namespace neno
 	};
 }
 
+#endif

@@ -157,6 +157,7 @@
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="TestEngine.cpp" />
     <ClCompile Include="Texture.cpp" />
+    <ClCompile Include="Tileset.cpp" />
     <ClCompile Include="Utils.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -171,6 +172,7 @@
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="TestEngine.h" />
     <ClInclude Include="Texture.h" />
+    <ClInclude Include="Tileset.h" />
     <ClInclude Include="Utils.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

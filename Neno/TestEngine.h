@@ -1,5 +1,6 @@
 #pragma once
 #include "Neno.h"
+#include <vector>
 
 namespace neno
 {
@@ -8,7 +9,9 @@ namespace neno
 	{
 		Texture* simpleTexture;
 		Sprite* simpleSprite;
+		Tileset* simpleTileset;
 		int x, y;
+		std::vector<int> points;
 	public:
 		TestEngine();
 

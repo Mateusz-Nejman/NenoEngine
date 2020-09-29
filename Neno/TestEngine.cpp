@@ -14,6 +14,15 @@ namespace neno
 		simpleSprite->color = Color::Red.Clone();
 		simpleSprite->scaleX = 2;
 		simpleSprite->scaleY = 1.5;
+
+		points.push_back(0);
+		points.push_back(0);
+		points.push_back(100);
+		points.push_back(28);
+		points.push_back(0);
+		points.push_back(256);
+
+		simpleTileset = new Tileset(Utils::FilePath("Content/simpleTileset1.png"), 32, 32);
 	}
 
 	void TestEngine::Update(float framesPerSecond)
@@ -52,6 +61,13 @@ namespace neno
 		simpleTexture->Draw(128, 128, 32, 32);
 		Primitives::DrawRectangle(10, 530, 100, 20, Color::Transparent);
 		Primitives::DrawTriangle(110, 600, 110, 480, 200, 540, Color::Red);
+		Primitives::DrawLine(0, 0, 800, 600, 4, Color::Blue);
+
+		simpleTileset->Draw(0, 128, 0, 0, 32, 32, Color::White);
+		simpleTileset->Draw(32, 128, 0, 1, 32, 32, Color::White);
+		simpleTileset->Draw(64, 128, 1, 0, 32, 32, Color::White);
+		simpleTileset->Draw(96, 128, 1, 1, 32, 32, Color::White);
+		Primitives::DrawPolygon(points, Color::Green);
 	}
 
 	void TestEngine::Resize(int width, int height)

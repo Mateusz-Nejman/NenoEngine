@@ -3,7 +3,6 @@
 
 #include <GL/glut.h>
 #include <FreeImage.h>
-#include<iostream>
 #include "Color.h"
 #include "Utils.h"
 

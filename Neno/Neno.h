@@ -9,6 +9,7 @@
 #include "Mouse.h"
 #include "Primitives.h"
 #include "Texture.h"
+#include "Tileset.h"
 #include "Utils.h"
 #include "Sprite.h"
 

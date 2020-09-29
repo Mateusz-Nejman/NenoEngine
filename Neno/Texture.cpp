@@ -5,7 +5,6 @@ namespace neno
 	Texture::Texture(const char* path)
 	{
 		FREE_IMAGE_FORMAT format = FreeImage_GetFileType(path, 0);
-		std::cout << "Format: " << format << std::endl;
 
 		if (format == FIF_UNKNOWN)
 			format = FreeImage_GetFIFFromFilename(path);
@@ -14,13 +13,9 @@ namespace neno
 
 		FIBITMAP* image = FreeImage_Load(format, path);
 
-		if (image == nullptr)
-			std::cout << "nullptr" << std::endl;
 		width = FreeImage_GetWidth(image);
 		height = FreeImage_GetHeight(image);
 		pixel_size = FreeImage_GetBPP(image);
-
-		std::cout << width << "x" << height << "x" << pixel_size << std::endl;
 
 		texture = (BYTE*)FreeImage_GetBits(image);
 		GLuint idTest;

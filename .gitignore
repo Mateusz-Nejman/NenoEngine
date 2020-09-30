@@ -14,7 +14,14 @@
 *.userprefs
 
 # Build results
-[Dd]ebug/
+[Dd]ebug/Neno.exe
+[Dd]ebug/Neno.ilk
+[Dd]ebug/Neno.pdb
+[Dd]ebug/*.obj
+[Dd]ebug/Neno.tlog/*.*
+[Dd]ebug/*.recipe
+[Dd]ebug/*.txt
+[Dd]ebug/*.idb
 [Dd]ebugPublic/
 [Rr]elease/
 [Rr]eleases/
@@ -338,3 +345,5 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database
 healthchecksdb
+/Neno/Debug/Neno.tlog
+/Neno/Debug

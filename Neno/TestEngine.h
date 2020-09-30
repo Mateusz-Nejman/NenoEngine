@@ -1,5 +1,6 @@
 #pragma once
 #include "Neno.h"
+#include <vector>
 
 namespace neno
 {
@@ -7,11 +8,14 @@ namespace neno
 		public Engine
 	{
 		Texture* simpleTexture;
+		Sprite* simpleSprite;
+		Tileset* simpleTileset;
 		int x, y;
+		std::vector<int> points;
 	public:
 		TestEngine();
 
-		void Update();
+		void Update(float framesPerSecond);
 
 		void Render();
 

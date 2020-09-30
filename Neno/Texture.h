@@ -3,7 +3,6 @@
 
 #include <GL/glut.h>
 #include <FreeImage.h>
-#include<iostream>
 #include "Color.h"
 #include "Utils.h"
 
@@ -14,13 +13,14 @@ namespace neno
 	private:
 		GLuint textureId;
 		BYTE* texture;
+		bool isPNG;
 	public:
 		int width;
 		int height;
 		int pixel_size;
 		Texture(const char* path);
 
-		void Draw(int x, int y, int width, int height);
+		void Draw(int x, int y, int width, int height, Color color = Color::White);
 	};
 }
 

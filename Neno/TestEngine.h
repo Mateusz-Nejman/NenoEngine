@@ -9,6 +9,7 @@ namespace neno
 	{
 		Texture* simpleTexture;
 		Sprite* simpleSprite;
+		Tileset* simpleTileset;
 		int x, y;
 		std::vector<int> points;
 	public:

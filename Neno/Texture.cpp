@@ -5,23 +5,17 @@ namespace neno
 	Texture::Texture(const char* path)
 	{
 		FREE_IMAGE_FORMAT format = FreeImage_GetFileType(path, 0);
-		std::cout << "Format: " << format << std::endl;
 
 		if (format == FIF_UNKNOWN)
 			format = FreeImage_GetFIFFromFilename(path);
 
-		isPNG = format == FIF_PNG;
-
 		FIBITMAP* image = FreeImage_Load(format, path);
 
-		if (image == nullptr)
-			std::cout << "nullptr" << std::endl;
 		width = FreeImage_GetWidth(image);
 		height = FreeImage_GetHeight(image);
 		pixel_size = FreeImage_GetBPP(image);
 
-		std::cout << width << "x" << height << "x" << pixel_size << std::endl;
-
+		isPNG = FreeImage_GetColorType(image) == FIC_RGBALPHA;
 		texture = (BYTE*)FreeImage_GetBits(image);
 		GLuint idTest;
 		glGenTextures(1, &idTest);
@@ -34,9 +28,9 @@ namespace neno
 
 		glBindTexture(GL_TEXTURE_2D, textureId);
 		if(isPNG)
-			glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, this->width, this->height, 0, GL_RGBA, GL_UNSIGNED_BYTE, texture);
+			glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, this->width, this->height, 0, GL_BGRA_EXT, GL_UNSIGNED_BYTE, texture);
 		else
-			glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, this->width, this->height, 0, GL_RGB, GL_UNSIGNED_BYTE, texture);
+			glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, this->width, this->height, 0, GL_BGR_EXT, GL_UNSIGNED_BYTE, texture);
 		glEnable(GL_TEXTURE_2D);
 		glBegin(GL_QUADS);
 		glTexCoord2d(0.0, 0.0);

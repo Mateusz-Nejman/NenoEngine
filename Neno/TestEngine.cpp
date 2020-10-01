@@ -57,17 +57,16 @@ namespace neno
 
 	void TestEngine::Render()
 	{
+		Primitives::DrawRectangleOutline(5, 5, 256, 256, 3, Color::Black);
+		Primitives::DrawRectangleOutline(271, 5, 256, 256, 3, Color::Black);
+
+		simpleTileset->Draw(10, 128, 0, 0, 32, 32, Color::White);
+		simpleTileset->Draw(42, 128, 0, 1, 32, 32, Color::White);
+		simpleTileset->Draw(74, 128, 1, 0, 32, 32, Color::White);
+		simpleTileset->Draw(106, 128, 1, 1, 32, 32, Color::White);
+
 		simpleSprite->Draw();
 		simpleTexture->Draw(128, 128, 32, 32);
-		Primitives::DrawRectangle(10, 530, 100, 20, Color::Transparent);
-		Primitives::DrawTriangle(110, 600, 110, 480, 200, 540, Color::Red);
-		Primitives::DrawLine(0, 0, 800, 600, 4, Color::Blue);
-
-		simpleTileset->Draw(0, 128, 0, 0, 32, 32, Color::White);
-		simpleTileset->Draw(32, 128, 0, 1, 32, 32, Color::White);
-		simpleTileset->Draw(64, 128, 1, 0, 32, 32, Color::White);
-		simpleTileset->Draw(96, 128, 1, 1, 32, 32, Color::White);
-		Primitives::DrawPolygon(points, Color::Green);
 	}
 
 	void TestEngine::Resize(int width, int height)

@@ -5,6 +5,7 @@
 #include <FreeImage.h>
 #include "Color.h"
 #include "Utils.h"
+#include "ImageUtils.h"
 
 namespace neno
 {
@@ -13,11 +14,11 @@ namespace neno
 	private:
 		GLuint textureId;
 		BYTE* texture;
-		bool isPNG;
+		bool hasAlpha;
 	public:
 		int width;
 		int height;
-		int pixel_size;
+		int pixelSize;
 		Texture(const char* path);
 
 		void Draw(int x, int y, int width, int height, Color color = Color::White);

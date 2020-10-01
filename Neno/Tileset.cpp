@@ -1,40 +1,23 @@
 #include "Tileset.h"
-
+#include<iostream>
 namespace neno
 {
 	Tileset::Tileset(const char* path, int tileWidth, int tileHeight)
 	{
-		FREE_IMAGE_FORMAT format = FreeImage_GetFileType(path, 0);
-
-		if (format == FIF_UNKNOWN)
-			format = FreeImage_GetFIFFromFilename(path);
-
-		FIBITMAP* image = FreeImage_Load(format, path);
-
-		this->tilesetWidth = FreeImage_GetWidth(image);
-		this->tilesetHeight = FreeImage_GetHeight(image);
+		ImageUtils::LoadImage(path, &this->tilesetWidth, &this->tilesetHeight, &this->pixelSize, &this->hasAlpha, &this->texture, &this->textureId);
 		this->tileWidth = tileWidth;
 		this->tileHeight = tileHeight;
 		this->rows = tilesetHeight / tileHeight;
 		this->columns = tilesetWidth / tileWidth;
-		pixel_size = FreeImage_GetBPP(image);
-		
-		isPNG = FreeImage_GetColorType(image) == FIC_RGBALPHA;
-		texture = (BYTE*)FreeImage_GetBits(image);
-		GLuint idTest;
-		glGenTextures(1, &idTest);
-		textureId = idTest;
+
+		std::cout << this->tilesetWidth << "x" << this->tilesetHeight << std::endl;
 	}
 
 	void Tileset::Draw(int x, int y, int tileX, int tileY, int width, int height, Color color)
 	{
 		glColor4d(color.r, color.g, color.b, color.a);
 
-		glBindTexture(GL_TEXTURE_2D, textureId);
-		if (isPNG)
-			glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, this->tilesetWidth, this->tilesetHeight, 0, GL_BGRA_EXT, GL_UNSIGNED_BYTE, texture);
-		else
-			glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, this->tilesetWidth, this->tilesetHeight, 0, GL_BGR_EXT, GL_UNSIGNED_BYTE, texture);
+		ImageUtils::SetImage(texture, textureId, this->tilesetWidth, this->tilesetHeight, hasAlpha);
 		glEnable(GL_TEXTURE_2D);
 		glBegin(GL_QUADS);
 

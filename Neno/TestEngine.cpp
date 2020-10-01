@@ -7,6 +7,9 @@ namespace neno
 	{
 		x = 0;
 		y = 320;
+		texBmp = new Texture(Utils::FilePath("Content/image.bmp"));
+		texPng = new Texture(Utils::FilePath("Content/image.png"));
+		texTPng = new Texture(Utils::FilePath("Content/transparent.png"));
 		simpleTexture = new Texture(Utils::FilePath("Content/image.bmp"));
 		simpleSprite = new Sprite(simpleTexture);
 		simpleSprite->originX = 16;
@@ -66,7 +69,9 @@ namespace neno
 		simpleTileset->Draw(106, 128, 1, 1, 32, 32, Color::White);
 
 		simpleSprite->Draw();
-		simpleTexture->Draw(128, 128, 32, 32);
+		texBmp->Draw(320, 128, 32, 32);
+		texPng->Draw(357, 128, 32, 32);
+		texTPng->Draw(357+37, 128, 32, 32);
 	}
 
 	void TestEngine::Resize(int width, int height)

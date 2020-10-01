@@ -8,6 +8,9 @@ namespace neno
 		public Engine
 	{
 		Texture* simpleTexture;
+		Texture* texBmp;
+		Texture* texPng;
+		Texture* texTPng;
 		Sprite* simpleSprite;
 		Tileset* simpleTileset;
 		int x, y;

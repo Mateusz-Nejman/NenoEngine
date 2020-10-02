@@ -1,5 +1,5 @@
 #include "Tileset.h"
-#include<iostream>
+
 namespace neno
 {
 	Tileset::Tileset(const char* path, int tileWidth, int tileHeight)
@@ -9,8 +9,6 @@ namespace neno
 		this->tileHeight = tileHeight;
 		this->rows = tilesetHeight / tileHeight;
 		this->columns = tilesetWidth / tileWidth;
-
-		std::cout << this->tilesetWidth << "x" << this->tilesetHeight << std::endl;
 	}
 
 	void Tileset::Draw(int x, int y, int tileX, int tileY, int width, int height, Color color)

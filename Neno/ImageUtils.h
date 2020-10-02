@@ -1,7 +1,6 @@
 #pragma once
 #include <GL/glut.h>
 #include <FreeImage.h>
-#include <iostream>
 
 namespace neno
 {

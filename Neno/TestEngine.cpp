@@ -9,7 +9,7 @@ namespace neno
 		y = 320;
 		texBmp = new Texture(Utils::FilePath("Content/image.bmp"));
 		texPng = new Texture(Utils::FilePath("Content/image.png"));
-		texTPng = new Texture(Utils::FilePath("Content/transparent.png"));
+		texTPng = new Texture(Utils::FilePath("Content/transparent1.png"));
 		simpleTexture = new Texture(Utils::FilePath("Content/image.bmp"));
 		simpleSprite = new Sprite(simpleTexture);
 		simpleSprite->originX = 16;

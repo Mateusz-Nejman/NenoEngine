@@ -14,11 +14,27 @@ namespace neno
 		int _height = FreeImage_GetHeight(image);
 		int _pixelSize = FreeImage_GetBPP(image);
 		
-		bool _hasAlpha = FreeImage_GetColorType(image) == FIC_RGBALPHA;
+		bool _hasAlpha = _pixelSize == 32;
 		GLuint _textureId;
 
-		image = FreeImage_ConvertTo24Bits(image);
+		if (_hasAlpha)
+		{
+			image = FreeImage_ConvertTo32Bits(image);
+		}
+		else
+		{
+			image = FreeImage_ConvertTo24Bits(image);
+		}
 		BYTE* _texture = (BYTE*)FreeImage_GetBits(image);
+
+		int modifier = _hasAlpha ? 4 : 3;
+		for (int a = 0; a < _width * _height * modifier; a+=modifier)
+		{
+			BYTE b = _texture[a];
+			BYTE r = _texture[a + 2];
+			_texture[a] = r;
+			_texture[a + 2] = b;
+		}
 
 		glGenTextures(1, &_textureId);
 		*width = _width;
@@ -43,8 +59,8 @@ namespace neno
 	{
 		glBindTexture(GL_TEXTURE_2D, textureId);
 		if (hasAlpha)
-			glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_BGRA_EXT, GL_UNSIGNED_BYTE, texture);
+			glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, texture);
 		else
-			glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_BGR_EXT, GL_UNSIGNED_BYTE, texture);
+			glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, texture);
 	}
 }

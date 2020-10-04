@@ -5,8 +5,11 @@ namespace neno
 {
 	TestEngine::TestEngine()
 	{
-		x = 0;
-		y = 320;
+		
+	}
+
+	void TestEngine::Create()
+	{
 		texBmp = new Texture(Utils::FilePath("Content/image.bmp"));
 		texPng = new Texture(Utils::FilePath("Content/image.png"));
 		texTPng = new Texture(Utils::FilePath("Content/transparent1.png"));
@@ -18,12 +21,7 @@ namespace neno
 		simpleSprite->scaleX = 2;
 		simpleSprite->scaleY = 1.5;
 
-		points.push_back(0);
-		points.push_back(0);
-		points.push_back(100);
-		points.push_back(28);
-		points.push_back(0);
-		points.push_back(256);
+		simpleFont = new Font(Utils::FilePath("Content/Roboto-Black.ttf"), 24);
 
 		simpleTileset = new Tileset(Utils::FilePath("Content/simpleTileset1.png"), 32, 32);
 	}
@@ -72,6 +70,9 @@ namespace neno
 		texBmp->Draw(320, 128, 32, 32);
 		texPng->Draw(357, 128, 32, 32);
 		texTPng->Draw(357+37, 128, 32, 32);
+
+		//simpleFont->Draw("Test", 256, 256, Color::Blue);
+		simpleFont->Draw("A co, jeœli ¿yjemy wiecznie?", 256, 256, Color::White);
 	}
 
 	void TestEngine::Resize(int width, int height)

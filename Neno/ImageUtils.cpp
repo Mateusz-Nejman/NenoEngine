@@ -63,4 +63,29 @@ namespace neno
 		else
 			glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, texture);
 	}
+
+	BYTE* ImageUtils::ConvertTTFToTransparent(unsigned char* buffer, int width, int height)
+	{
+		BYTE* newBuffer = new BYTE[width * height * 4];
+		for (int a = 0; a < width * height * 4; a+=4)
+		{
+			int old = a / 4;
+
+			if ((int)buffer[old] == 0)
+			{
+				newBuffer[a] = 0;
+				newBuffer[a + 1] = 0;
+				newBuffer[a + 2] = 0;
+				newBuffer[a + 3] = 0;
+			}
+			else
+			{
+				newBuffer[a] = buffer[old];
+				newBuffer[a + 1] = buffer[old];
+				newBuffer[a + 2] = buffer[old];
+				newBuffer[a + 3] = buffer[old];
+			}
+		}
+		return newBuffer;
+	}
 }

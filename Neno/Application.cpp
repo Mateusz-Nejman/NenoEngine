@@ -27,7 +27,6 @@ namespace neno
         glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
         glOrtho(0, currentConfig->screenWidth, 0, currentConfig->screenHeight, -1, 1);
         mainEngine->Render();
-        DrawDebugInfo();
         glfwSwapBuffers(glfwWindow);
     }
 
@@ -75,33 +74,6 @@ namespace neno
         ProcessMouse(window, -1, 0, 0);
     }
 
-    void Application::DrawDebugInfo()
-    {
-        GetSystemTime(sysTime);
-        GlobalMemoryStatusEx(memInfo);
-        GetProcessMemoryInfo(GetCurrentProcess(), (PROCESS_MEMORY_COUNTERS*)&pmc, sizeof(pmc));
-        std::string framesText = std::to_string(framesPerSecond);
-
-        std::string systemHourText = std::to_string(sysTime->wHour);
-        std::string systemMinuteText = std::to_string(sysTime->wMinute);
-        std::string systemSecondText = std::to_string(sysTime->wSecond);
-
-        std::string totalVirtualMemText = std::to_string(memInfo->ullTotalPageFile);
-        std::string virtualMemUsedText = std::to_string((memInfo->ullTotalPageFile - memInfo->ullAvailPageFile));
-        std::string memoryUsedText = std::to_string(pmc->PrivateUsage / MB);
-
-        Color textColor = Color::White;
-        glColor4d(textColor.r, textColor.g, textColor.b, textColor.a);
-        glRasterPos2f(5, currentConfig->screenHeight - 25);
-        //glutBitmapString(GLUT_BITMAP_HELVETICA_18, reinterpret_cast<const unsigned char*>(("FPS: " +framesText).c_str()));
-        glRasterPos2f(5, currentConfig->screenHeight - 45);
-        //glutBitmapString(GLUT_BITMAP_HELVETICA_18, reinterpret_cast<const unsigned char*>(("System time: " + (systemHourText + ":" + systemMinuteText + ":" + systemSecondText)).c_str()));
-        glRasterPos2f(5, currentConfig->screenHeight - 65);
-        //glutBitmapString(GLUT_BITMAP_HELVETICA_18, reinterpret_cast<const unsigned char*>(("Memory Used: " + memoryUsedText).c_str()));
-        
-        glFlush();
-    }
-
     void Application::Start(Engine* engine, ApplicationConfig* config, int argc, char* argv[])
     {
         if (engine == nullptr)
@@ -134,17 +106,22 @@ namespace neno
         PROCESS_MEMORY_COUNTERS_EX pmcEx;
         pmc = &pmcEx;
 
-        glewInit();
-        glfwInit();
-        glfwWindow = glfwCreateWindow(currentConfig->screenWidth, currentConfig->screenHeight, "Neno engine tests", NULL, NULL);
-
-        glfwMakeContextCurrent(glfwWindow);
         
+        
+        glfwInit();
+        
+
+        mainEngine->Create();
+        glfwWindow = glfwCreateWindow(currentConfig->screenWidth, currentConfig->screenHeight, "Neno engine tests", NULL, NULL);
+        glfwMakeContextCurrent(glfwWindow);
+        glewInit();
 
         glfwSetKeyCallback(glfwWindow, ProcessKeyboard);
         glfwSetMouseButtonCallback(glfwWindow, ProcessMouse);
         glfwSetCursorPosCallback(glfwWindow, ProcessMousePos);
 
+
+        
         while (!glfwWindowShouldClose(glfwWindow))
         {
             Loop();

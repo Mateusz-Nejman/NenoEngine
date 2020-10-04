@@ -12,5 +12,6 @@
 #include "Tileset.h"
 #include "Utils.h"
 #include "Sprite.h"
+#include "Font.h"
 
 #endif

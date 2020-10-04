@@ -22,7 +22,6 @@ namespace neno
     {
     public:
         static void Start(Engine* _engine, ApplicationConfig* config, int argc, char* argv[]);
-
     private:
         static MEMORYSTATUSEX* memInfo;
         static SYSTEMTIME* sysTime;
@@ -41,7 +40,6 @@ namespace neno
         static void ProcessKeyboard(GLFWwindow* window, int key, int scancode, int action, int mods);
         static void ProcessMouse(GLFWwindow* window, int button, int action, int mods);
         static void ProcessMousePos(GLFWwindow* window, double xpos, double ypos);
-        static void DrawDebugInfo();
     };
 }
 

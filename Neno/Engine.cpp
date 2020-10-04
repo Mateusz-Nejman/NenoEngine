@@ -2,6 +2,11 @@
 
 namespace neno
 {
+	void Engine::Create()
+	{
+
+	}
+
 	void Engine::Render()
 	{
 

@@ -13,10 +13,11 @@ namespace neno
 		Texture* texTPng;
 		Sprite* simpleSprite;
 		Tileset* simpleTileset;
-		int x, y;
-		std::vector<int> points;
+		Font* simpleFont;
 	public:
 		TestEngine();
+
+		void Create();
 
 		void Update(float framesPerSecond);
 

@@ -1,7 +1,7 @@
 #ifndef MOUSE_H
 #define MOUSE_H
 
-#include <GL/glut.h>
+#include <GLFW/glfw3.h>
 
 namespace neno
 {

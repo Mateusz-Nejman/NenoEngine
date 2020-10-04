@@ -46,25 +46,4 @@ namespace neno
 	{
 		return key_pressed[key] == 0 && old_key_pressed[key] == 1;
 	}
-
-	bool Keyboard::IsShift()
-	{
-		int mod = glutGetModifiers();
-
-		return mod == GLUT_ACTIVE_SHIFT;
-	}
-
-	bool Keyboard::IsCtrl()
-	{
-		int mod = glutGetModifiers();
-
-		return mod == GLUT_ACTIVE_CTRL;
-	}
-
-	bool Keyboard::IsAlt()
-	{
-		int mod = glutGetModifiers();
-
-		return mod == GLUT_ACTIVE_ALT;
-	}
 }

@@ -1,7 +1,9 @@
 #ifndef APPLICATION_H
 #define APPLICATION_H
 
-#include <GL/freeglut.h>
+#define GLFW_INCLUDE_NONE
+#include <GL/glew.h>
+#include <GLFW/glfw3.h>
 #include <iostream>
 #include <string>
 #include <windows.h>
@@ -30,17 +32,15 @@ namespace neno
         static int frames;
         static int timebase;
         static float framesPerSecond;
+        static GLFWwindow* glfwWindow;
         static void StartWindow(int argc, char* argv[]);
         static void Update();
         static void Render();
         static void Loop();
         static void Resize(int width, int heght);
-        static void ProcessKeyboard(unsigned char _char, int x, int y);
-        static void ProcessKeyboardReset(unsigned char _char, int x, int y);
-        static void ProcessKeyboardSpecial(int key, int x, int y);
-        static void ProcessKeyboardSpecialReset(int key, int x, int y);
-        static void ProcessMouse(int button, int state, int x, int y);
-        static void ProcessMouseMove(int x, int y);
+        static void ProcessKeyboard(GLFWwindow* window, int key, int scancode, int action, int mods);
+        static void ProcessMouse(GLFWwindow* window, int button, int action, int mods);
+        static void ProcessMousePos(GLFWwindow* window, double xpos, double ypos);
         static void DrawDebugInfo();
     };
 }

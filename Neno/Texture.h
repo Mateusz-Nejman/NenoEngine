@@ -1,7 +1,7 @@
 #ifndef TEXTURE_H
 #define TEXTURE_H
 
-#include <GL/glut.h>
+#include <GL/glew.h>
 #include <FreeImage.h>
 #include "Color.h"
 #include "Utils.h"

@@ -32,16 +32,16 @@ namespace neno
 
 	bool Mouse::LeftPressed()
 	{
-		return mouse_data[0] == GLUT_DOWN;
+		return mouse_data[0] == GLFW_PRESS;
 	}
 
 	bool Mouse::MiddlePressed()
 	{
-		return mouse_data[1] == GLUT_DOWN;
+		return mouse_data[1] == GLFW_PRESS;
 	}
 
 	bool Mouse::RightPressed()
 	{
-		return mouse_data[2] == GLUT_DOWN;
+		return mouse_data[2] == GLFW_PRESS;
 	}
 }

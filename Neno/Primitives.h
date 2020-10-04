@@ -1,7 +1,7 @@
 #ifndef PRIMITIVES_H
 #define PRIMITIVES_H
 
-#include <GL/glut.h>
+#include <GL/glew.h>
 #include <vector>
 #include "Color.h"
 

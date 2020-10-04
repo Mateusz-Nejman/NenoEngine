@@ -1,38 +1,134 @@
 #ifndef KEYBOARD_H
 #define KEYBOARD_H
 
-#include <GL/glut.h>
+/* The unknown key */
+#define GLFW_KEY_UNKNOWN            -1
 
-#define NENO_KEY_F1 257
-#define NENO_KEY_F2 258
-#define NENO_KEY_F3 259
-#define NENO_KEY_F4 260
-#define NENO_KEY_F5 261
-#define NENO_KEY_F6 262
-#define NENO_KEY_F7 263
-#define NENO_KEY_F8 264
-#define NENO_KEY_F9 265
-#define NENO_KEY_F10 266
-#define NENO_KEY_F11 267
-#define NENO_KEY_F12 268
+/* Printable keys */
+#define NENO_KEY_SPACE              32
+#define NENO_KEY_APOSTROPHE         39  /* ' */
+#define NENO_KEY_COMMA              44  /* , */
+#define NENO_KEY_MINUS              45  /* - */
+#define NENO_KEY_PERIOD             46  /* . */
+#define NENO_KEY_SLASH              47  /* / */
+#define NENO_KEY_0                  48
+#define NENO_KEY_1                  49
+#define NENO_KEY_2                  50
+#define NENO_KEY_3                  51
+#define NENO_KEY_4                  52
+#define NENO_KEY_5                  53
+#define NENO_KEY_6                  54
+#define NENO_KEY_7                  55
+#define NENO_KEY_8                  56
+#define NENO_KEY_9                  57
+#define NENO_KEY_SEMICOLON          59  /* ; */
+#define NENO_KEY_EQUAL              61  /* = */
+#define NENO_KEY_A                  65
+#define NENO_KEY_B                  66
+#define NENO_KEY_C                  67
+#define NENO_KEY_D                  68
+#define NENO_KEY_E                  69
+#define NENO_KEY_F                  70
+#define NENO_KEY_G                  71
+#define NENO_KEY_H                  72
+#define NENO_KEY_I                  73
+#define NENO_KEY_J                  74
+#define NENO_KEY_K                  75
+#define NENO_KEY_L                  76
+#define NENO_KEY_M                  77
+#define NENO_KEY_N                  78
+#define NENO_KEY_O                  79
+#define NENO_KEY_P                  80
+#define NENO_KEY_Q                  81
+#define NENO_KEY_R                  82
+#define NENO_KEY_S                  83
+#define NENO_KEY_T                  84
+#define NENO_KEY_U                  85
+#define NENO_KEY_V                  86
+#define NENO_KEY_W                  87
+#define NENO_KEY_X                  88
+#define NENO_KEY_Y                  89
+#define NENO_KEY_Z                  90
+#define NENO_KEY_LEFT_BRACKET       91  /* [ */
+#define NENO_KEY_BACKSLASH          92  /* \ */
+#define NENO_KEY_RIGHT_BRACKET      93  /* ] */
+#define NENO_KEY_GRAVE_ACCENT       96  /* ` */
+#define NENO_KEY_WORLD_1            161 /* non-US #1 */
+#define NENO_KEY_WORLD_2            162 /* non-US #2 */
 
-#define NENO_KEY_LEFT 356
-#define NENO_KEY_UP 357
-#define NENO_KEY_RIGHT 358
-#define NENO_KEY_DOWN 359
+/* Function keys */
+#define NENO_KEY_ESCAPE             256
+#define NENO_KEY_ENTER              257
+#define NENO_KEY_TAB                258
+#define NENO_KEY_BACKSPACE          259
+#define NENO_KEY_INSERT             260
+#define NENO_KEY_DELETE             261
+#define NENO_KEY_RIGHT              262
+#define NENO_KEY_LEFT               263
+#define NENO_KEY_DOWN               264
+#define NENO_KEY_UP                 265
+#define NENO_KEY_PAGE_UP            266
+#define NENO_KEY_PAGE_DOWN          267
+#define NENO_KEY_HOME               268
+#define NENO_KEY_END                269
+#define NENO_KEY_CAPS_LOCK          280
+#define NENO_KEY_SCROLL_LOCK        281
+#define NENO_KEY_NUM_LOCK           282
+#define NENO_KEY_PRINT_SCREEN       283
+#define NENO_KEY_PAUSE              284
+#define NENO_KEY_F1                 290
+#define NENO_KEY_F2                 291
+#define NENO_KEY_F3                 292
+#define NENO_KEY_F4                 293
+#define NENO_KEY_F5                 294
+#define NENO_KEY_F6                 295
+#define NENO_KEY_F7                 296
+#define NENO_KEY_F8                 297
+#define NENO_KEY_F9                 298
+#define NENO_KEY_F10                299
+#define NENO_KEY_F11                300
+#define NENO_KEY_F12                301
+#define NENO_KEY_F13                302
+#define NENO_KEY_F14                303
+#define NENO_KEY_F15                304
+#define NENO_KEY_F16                305
+#define NENO_KEY_F17                306
+#define NENO_KEY_F18                307
+#define NENO_KEY_F19                308
+#define NENO_KEY_F20                309
+#define NENO_KEY_F21                310
+#define NENO_KEY_F22                311
+#define NENO_KEY_F23                312
+#define NENO_KEY_F24                313
+#define NENO_KEY_F25                314
+#define NENO_KEY_KP_0               320
+#define NENO_KEY_KP_1               321
+#define NENO_KEY_KP_2               322
+#define NENO_KEY_KP_3               323
+#define NENO_KEY_KP_4               324
+#define NENO_KEY_KP_5               325
+#define NENO_KEY_KP_6               326
+#define NENO_KEY_KP_7               327
+#define NENO_KEY_KP_8               328
+#define NENO_KEY_KP_9               329
+#define NENO_KEY_KP_DECIMAL         330
+#define NENO_KEY_KP_DIVIDE          331
+#define NENO_KEY_KP_MULTIPLY        332
+#define NENO_KEY_KP_SUBTRACT        333
+#define NENO_KEY_KP_ADD             334
+#define NENO_KEY_KP_ENTER           335
+#define NENO_KEY_KP_EQUAL           336
+#define NENO_KEY_LEFT_SHIFT         340
+#define NENO_KEY_LEFT_CONTROL       341
+#define NENO_KEY_LEFT_ALT           342
+#define NENO_KEY_LEFT_SUPER         343
+#define NENO_KEY_RIGHT_SHIFT        344
+#define NENO_KEY_RIGHT_CONTROL      345
+#define NENO_KEY_RIGHT_ALT          346
+#define NENO_KEY_RIGHT_SUPER        347
+#define NENO_KEY_MENU               348
 
-#define NENO_KEY_PAGEUP 360
-#define NENO_KEY_PAGEDOWN 361
-#define NENO_KEY_HOME 362
-#define NENO_KEY_END 363
-#define NENO_KEY_INSERT 364
-
-#define NENO_KEY_LSHIFT 368
-#define NENO_KEY_RSHIFT 369
-
-#define NENO_KEY_LCTRL 370
-#define NENO_KEY_RCTRL 371
-#define NENO_KEY_RALT 372
+#define NENO_KEY_LAST               NENO_KEY_MENU
 
 namespace neno
 {

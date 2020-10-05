@@ -4,6 +4,7 @@ Prototype of game engine.
 [Documentation](https://mateusz-nejman.github.io/NenoEngine-Doc/)
 
 ## Requirements
-- freeGLUT
+- GLFW
 - GLEW
 - FreeImage
+- FreeType

@@ -3,7 +3,7 @@
 namespace neno
 {
     FT_Library* Font::freeTypeLibrary = nullptr;
-	Font::Font(const char* filepath, int size)
+	Font::Font(const char* filepath, int size, int firstChar, int lastChar)
 	{
 		if (freeTypeLibrary == nullptr)
 		{
@@ -14,7 +14,7 @@ namespace neno
 		FT_New_Face(*freeTypeLibrary, filepath, 0, &face);
 		FT_Set_Pixel_Sizes(face, 0, size);
 
-        for (unsigned char c = 32; c < 255; c++)
+        for (unsigned int c = firstChar; c < lastChar; c++)
         {
  
             if (FT_Load_Char(face, c, FT_LOAD_RENDER))
@@ -32,17 +32,19 @@ namespace neno
                 face->glyph->advance.x,
                 ImageUtils::ConvertTTFToTransparent(face->glyph->bitmap.buffer, face->glyph->bitmap.width, face->glyph->bitmap.rows)
             };
-            characters.insert(std::pair<char, Character>(c, character));
+
+            characters.insert(std::pair<unsigned int, Character>(c, character));
         }
 	}
 
-    void Font::Draw(std::string text, int x, int y, Color color)
+    void Font::Draw(std::wstring text, int x, int y, Color color)
     {
         glColor4d(color.r, color.g, color.b, color.a);
 
-        std::string::const_iterator c;
+        std::wstring::const_iterator c;
         for (c = text.begin(); c != text.end(); c++)
         {
+            
             Character ch = characters[*c];
             FT_Load_Char(face, *c, FT_LOAD_RENDER);
             float xpos = x + ch.OffsetX;
@@ -80,9 +82,9 @@ namespace neno
         }
     }
 
-    void Font::DrawMultiColor(std::string text, int x, int y, Color* colors)
+    void Font::DrawMultiColor(std::wstring text, int x, int y, Color* colors)
     {
-        std::string::const_iterator c;
+        std::wstring::const_iterator c;
         int colorIndex = 0;
         for (c = text.begin(); c != text.end(); c++)
         {

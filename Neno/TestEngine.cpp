@@ -1,4 +1,4 @@
-#include "TestEngine.h"
+Ôªø#include "TestEngine.h"
 #include <iostream>
 
 namespace neno
@@ -21,7 +21,7 @@ namespace neno
 		simpleSprite->scaleX = 2;
 		simpleSprite->scaleY = 1.5;
 
-		simpleFont = new Font(Utils::FilePath("Content/Roboto-Black.ttf"), 24);
+		simpleFont = new Font(Utils::FilePath("Content/Roboto-Black.ttf"), 24,32,381);
 
 		simpleTileset = new Tileset(Utils::FilePath("Content/simpleTileset1.png"), 32, 32);
 	}
@@ -72,7 +72,7 @@ namespace neno
 		texTPng->Draw(357+37, 128, 32, 32);
 
 		//simpleFont->Draw("Test", 256, 256, Color::Blue);
-		simpleFont->Draw("A co, jeúli øyjemy wiecznie?", 256, 256, Color::White);
+		simpleFont->Draw(L"A co, je≈õli ≈ºyjemy wiecznie?", 256, 256, Color::White);
 	}
 
 	void TestEngine::Resize(int width, int height)

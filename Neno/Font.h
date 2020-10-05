@@ -6,6 +6,7 @@
 #include "Color.h"
 #include "ImageUtils.h"
 #include FT_FREETYPE_H 
+#include <iostream>
 
 namespace neno
 {
@@ -23,11 +24,11 @@ namespace neno
 		static FT_Library* freeTypeLibrary;
 		FT_Face face;
 		int size;
-		std::map<char, Character> characters;
+		std::map<unsigned int, Character> characters;
 	public:
-		Font(const char* filepath, int size);
-		void Draw(std::string text, int x, int y, Color color);
-		void DrawMultiColor(std::string text, int x, int y, Color* colors);
+		Font(const char* filepath, int size, int firstChar = 32, int lastChar = 255);
+		void Draw(std::wstring text, int x, int y, Color color);
+		void DrawMultiColor(std::wstring text, int x, int y, Color* colors);
 	};
 
 }

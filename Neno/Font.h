@@ -6,7 +6,6 @@
 #include "Color.h"
 #include "ImageUtils.h"
 #include FT_FREETYPE_H 
-#include <iostream>
 
 namespace neno
 {

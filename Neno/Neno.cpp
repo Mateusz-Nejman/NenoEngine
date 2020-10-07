@@ -9,9 +9,15 @@ using namespace neno;
 int main(int argc, char* argv[])
 {
     std::cout << "Hello World!\n";
-    TestEngine engine;
-    ApplicationConfig config(1024, 768, false, true, Color::CornflowerBlue);
-    Application::Start(&engine, &config, argc, argv);
+    TestEngine* engine = new TestEngine();
+    ApplicationConfig* config = new ApplicationConfig(1024, 768, false, true, &Color::CornflowerBlue);
+    Application::Start(engine, config, argc, argv);
+
+    delete engine;
+    delete config;
+    engine = nullptr;
+    config = nullptr;
+
     system("PAUSE");
     return 0;
 }

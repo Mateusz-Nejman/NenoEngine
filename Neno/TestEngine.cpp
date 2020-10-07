@@ -1,8 +1,26 @@
 ﻿#include "TestEngine.h"
-#include <iostream>
 
 namespace neno
 {
+	TestEngine::~TestEngine()
+	{
+		delete texBmp;
+		delete texPng;
+		delete texTPng;
+		delete simpleTexture;
+		delete simpleSprite;
+		delete simpleFont;
+		delete simpleTileset;
+
+		texBmp = nullptr;
+		texPng = nullptr;
+		texTPng = nullptr;
+		simpleTexture = nullptr;
+		simpleSprite = nullptr;
+		simpleFont = nullptr;
+		simpleTileset = nullptr;
+	}
+
 	TestEngine::TestEngine()
 	{
 		
@@ -15,6 +33,7 @@ namespace neno
 		texTPng = new Texture(Utils::FilePath("Content/transparent1.png"));
 		simpleTexture = new Texture(Utils::FilePath("Content/image.bmp"));
 		simpleSprite = new Sprite(simpleTexture);
+
 		simpleSprite->originX = 16;
 		simpleSprite->originY = 16;
 		simpleSprite->color = Color::Red.Clone();
@@ -70,6 +89,7 @@ namespace neno
 		texBmp->Draw(320, 128, 32, 32);
 		texPng->Draw(357, 128, 32, 32);
 		texTPng->Draw(357+37, 128, 32, 32);
+		simpleTexture->Draw(357 + 37 + 37, 128, 32, 32);
 
 		//simpleFont->Draw("Test", 256, 256, Color::Blue);
 		simpleFont->Draw(L"A co, jeśli żyjemy wiecznie?", 256, 256, Color::White);

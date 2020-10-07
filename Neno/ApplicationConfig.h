@@ -12,9 +12,11 @@ namespace neno
 		int screenHeight;
 		bool allowFullscreen;
 		bool debugMode;
-		Color clearBufferColor;
+		Color* clearBufferColor;
 
-		ApplicationConfig(int screenWidth, int screenHeight, bool allowFullscreen, bool debugMode, Color clearBufferColor);
+		~ApplicationConfig();
+		ApplicationConfig(int screenWidth, int screenHeight, bool allowFullscreen, bool debugMode, Color* clearBufferColor);
+		void Dispose();
 	};
 }
 

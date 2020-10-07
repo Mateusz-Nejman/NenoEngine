@@ -25,9 +25,11 @@ namespace neno
 		int size;
 		std::map<unsigned int, Character> characters;
 	public:
+		~Font();
 		Font(const char* filepath, int size, int firstChar = 32, int lastChar = 255);
 		void Draw(std::wstring text, int x, int y, Color color);
 		void DrawMultiColor(std::wstring text, int x, int y, Color* colors);
+		static void Dispose();
 	};
 
 }

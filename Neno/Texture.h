@@ -15,11 +15,13 @@ namespace neno
 		GLuint textureId;
 		BYTE* texture;
 		bool hasAlpha;
+		FIBITMAP* bitmap;
 	public:
 		int width;
 		int height;
 		int pixelSize;
 		Texture(const char* path);
+		~Texture();
 
 		void Draw(int x, int y, int width, int height, Color color = Color::White);
 	};

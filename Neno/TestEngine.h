@@ -16,6 +16,7 @@ namespace neno
 		Font* simpleFont;
 	public:
 		TestEngine();
+		~TestEngine();
 
 		void Create();
 

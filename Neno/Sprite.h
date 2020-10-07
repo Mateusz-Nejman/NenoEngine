@@ -1,6 +1,7 @@
 #pragma once
 #include "Texture.h"
 #include "Color.h"
+
 namespace neno
 {
 	class Sprite
@@ -20,6 +21,7 @@ namespace neno
 		Color* color;
 		Texture* texture;
 
+		~Sprite();
 		Sprite(Texture* texture);
 		Sprite(Texture* texture, int x, int y);
 		Sprite(Texture* texture, int x, int y, int width, int height);

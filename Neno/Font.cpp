@@ -3,6 +3,16 @@
 namespace neno
 {
     FT_Library* Font::freeTypeLibrary = nullptr;
+    Font::~Font()
+    {
+        for (int a = 0; a < characters.size(); a++)
+        {
+            delete characters[a].Texture;
+            characters[a].Texture = nullptr;
+        }
+
+        characters.clear();
+    }
 	Font::Font(const char* filepath, int size, int firstChar, int lastChar)
 	{
 		if (freeTypeLibrary == nullptr)
@@ -126,5 +136,12 @@ namespace neno
             x += (ch.Advance >> 6);
             colorIndex++;
         }
+    }
+
+    void Font::Dispose()
+    {
+        FT_Done_FreeType(*freeTypeLibrary);
+
+        delete freeTypeLibrary;
     }
 }

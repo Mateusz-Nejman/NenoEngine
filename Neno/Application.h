@@ -8,11 +8,13 @@
 #include <string>
 #include <windows.h>
 #include <Psapi.h>
+#include <memory>
 #include "ApplicationConfig.h"
 #include "Color.h"
 #include "Engine.h"
 #include "Keyboard.h"
 #include "Mouse.h"
+#include "Font.h"
 
 #define MB 1048576
 

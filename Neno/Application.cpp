@@ -14,7 +14,7 @@ namespace neno
 
     void Application::Render()
     {
-        Color bufferColor = currentConfig->clearBufferColor;
+        Color bufferColor = *currentConfig->clearBufferColor;
         glClear(GL_COLOR_BUFFER_BIT);
         glClearColor(bufferColor.r, bufferColor.g, bufferColor.b, 1.0);
         
@@ -106,12 +106,11 @@ namespace neno
         PROCESS_MEMORY_COUNTERS_EX pmcEx;
         pmc = &pmcEx;
 
-        
-        
         glfwInit();
         
 
         mainEngine->Create();
+
         glfwWindow = glfwCreateWindow(currentConfig->screenWidth, currentConfig->screenHeight, "Neno engine tests", NULL, NULL);
         glfwMakeContextCurrent(glfwWindow);
         glewInit();
@@ -120,13 +119,13 @@ namespace neno
         glfwSetMouseButtonCallback(glfwWindow, ProcessMouse);
         glfwSetCursorPosCallback(glfwWindow, ProcessMousePos);
 
-
-        
         while (!glfwWindowShouldClose(glfwWindow))
         {
             Loop();
         }
 
         glfwTerminate();
+        
+        Font::Dispose();
     }
 }

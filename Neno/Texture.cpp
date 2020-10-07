@@ -4,14 +4,21 @@ namespace neno
 {
 	Texture::Texture(const char* path)
 	{
-		ImageUtils::LoadImage(path, &width, &height, &pixelSize, &hasAlpha, &texture, &textureId);
+		ImageUtils::LoadImage(path, &width, &height, &pixelSize, &hasAlpha, &texture, &textureId, bitmap);
+	}
+
+	Texture::~Texture()
+	{
+		FreeImage_Unload(bitmap);
+		texture = nullptr;
+		bitmap = nullptr;
 	}
 
 	void Texture::Draw(int x, int y, int width, int height, Color color)
 	{
 		glColor4d(color.r, color.g, color.b, color.a);
 
-		ImageUtils::SetImage(texture, textureId, this->width, this->height, hasAlpha);
+		ImageUtils::SetImage(texture, textureId, this->width,this->height, hasAlpha);
 		glEnable(GL_TEXTURE_2D);
 		glBegin(GL_QUADS);
 		glTexCoord2d(0.0, 0.0);

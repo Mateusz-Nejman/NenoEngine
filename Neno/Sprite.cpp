@@ -2,6 +2,13 @@
 
 namespace neno
 {
+	Sprite::~Sprite()
+	{
+		delete color;
+		color = nullptr;
+		texture = nullptr;
+	}
+
 	Sprite::Sprite(Texture* texture)
 	{
 		Initialize(texture);

@@ -4,11 +4,18 @@ namespace neno
 {
 	Tileset::Tileset(const char* path, int tileWidth, int tileHeight)
 	{
-		ImageUtils::LoadImage(path, &this->tilesetWidth, &this->tilesetHeight, &this->pixelSize, &this->hasAlpha, &this->texture, &this->textureId);
+		ImageUtils::LoadImage(path, &this->tilesetWidth, &this->tilesetHeight, &this->pixelSize, &this->hasAlpha, &this->texture, &this->textureId, this->bitmap);
 		this->tileWidth = tileWidth;
 		this->tileHeight = tileHeight;
 		this->rows = tilesetHeight / tileHeight;
 		this->columns = tilesetWidth / tileWidth;
+	}
+
+	Tileset::~Tileset()
+	{
+		FreeImage_Unload(bitmap);
+		texture = nullptr;
+		bitmap = nullptr;
 	}
 
 	void Tileset::Draw(int x, int y, int tileX, int tileY, int width, int height, Color color)

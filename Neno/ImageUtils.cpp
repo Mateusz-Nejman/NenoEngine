@@ -2,7 +2,7 @@
 
 namespace neno
 {
-	void ImageUtils::LoadImage(const char* path, int* width, int* height, int* pixelSize, bool* hasAlpha, BYTE** texture, GLuint* textureId)
+	void ImageUtils::LoadImage(const char* path, int* width, int* height, int* pixelSize, bool* hasAlpha, BYTE** texture, GLuint* textureId, FIBITMAP* fiBitmap)
 	{
 		FREE_IMAGE_FORMAT format = FreeImage_GetFileType(path, 0);
 
@@ -43,6 +43,7 @@ namespace neno
 		*hasAlpha = _hasAlpha;
 		*texture = _texture;
 		*textureId = _textureId;
+		fiBitmap = image;
 
 		/*std::cout << "Debug LoadImage " << path << std::endl;
 		std::cout << "Format: " << format << std::endl;

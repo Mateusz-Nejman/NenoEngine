@@ -15,6 +15,7 @@
 #include "Keyboard.h"
 #include "Mouse.h"
 #include "Font.h"
+#include "Sound.h"
 
 #define MB 1048576
 
@@ -24,12 +25,12 @@ namespace neno
     {
     public:
         static void Start(Engine* _engine, ApplicationConfig* config, int argc, char* argv[]);
+        static ApplicationConfig* currentConfig;
     private:
         static MEMORYSTATUSEX* memInfo;
         static SYSTEMTIME* sysTime;
         static PROCESS_MEMORY_COUNTERS_EX* pmc;
         static Engine* mainEngine;
-        static ApplicationConfig* currentConfig;
         static int frames;
         static int timebase;
         static float framesPerSecond;

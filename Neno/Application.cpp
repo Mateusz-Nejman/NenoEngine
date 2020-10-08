@@ -127,5 +127,6 @@ namespace neno
         glfwTerminate();
         
         Font::Dispose();
+        Sound::Dispose();
     }
 }

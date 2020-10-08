@@ -96,7 +96,7 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(SolutionDir)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>glfw3.lib;FreeImage.lib;glew32.lib;glu32.lib;opengl32.lib;freetype.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>glfw3.lib;FreeImage.lib;glew32.lib;glu32.lib;opengl32.lib;freetype.lib;irrKlang.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <ProjectReference>
       <UseLibraryDependencyInputs>true</UseLibraryDependencyInputs>
@@ -169,6 +169,7 @@
     <ClCompile Include="Mouse.cpp" />
     <ClCompile Include="Neno.cpp" />
     <ClCompile Include="Primitives.cpp" />
+    <ClCompile Include="Sound.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="TestEngine.cpp" />
     <ClCompile Include="Texture.cpp" />
@@ -186,6 +187,7 @@
     <ClInclude Include="Mouse.h" />
     <ClInclude Include="Neno.h" />
     <ClInclude Include="Primitives.h" />
+    <ClInclude Include="Sound.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="TestEngine.h" />
     <ClInclude Include="Texture.h" />

@@ -11,6 +11,7 @@ namespace neno
 		delete simpleSprite;
 		delete simpleFont;
 		delete simpleTileset;
+		delete mainMusic;
 
 		texBmp = nullptr;
 		texPng = nullptr;
@@ -19,6 +20,7 @@ namespace neno
 		simpleSprite = nullptr;
 		simpleFont = nullptr;
 		simpleTileset = nullptr;
+		mainMusic = nullptr;
 	}
 
 	TestEngine::TestEngine()
@@ -28,10 +30,10 @@ namespace neno
 
 	void TestEngine::Create()
 	{
-		texBmp = new Texture(Utils::FilePath("Content/image.bmp"));
-		texPng = new Texture(Utils::FilePath("Content/image.png"));
-		texTPng = new Texture(Utils::FilePath("Content/transparent1.png"));
-		simpleTexture = new Texture(Utils::FilePath("Content/image.bmp"));
+		texBmp = new Texture(Utils::FilePath("Content/Graphics/image.bmp"));
+		texPng = new Texture(Utils::FilePath("Content/Graphics/image.png"));
+		texTPng = new Texture(Utils::FilePath("Content/Graphics/transparent1.png"));
+		simpleTexture = new Texture(Utils::FilePath("Content/Graphics/image.bmp"));
 		simpleSprite = new Sprite(simpleTexture);
 
 		simpleSprite->originX = 16;
@@ -40,13 +42,17 @@ namespace neno
 		simpleSprite->scaleX = 2;
 		simpleSprite->scaleY = 1.5;
 
-		simpleFont = new Font(Utils::FilePath("Content/Roboto-Black.ttf"), 24,32,381);
+		simpleFont = new Font(Utils::FilePath("Content/Fonts/Roboto-Black.ttf"), 24,32,381);
 
-		simpleTileset = new Tileset(Utils::FilePath("Content/simpleTileset1.png"), 32, 32);
+		simpleTileset = new Tileset(Utils::FilePath("Content/Graphics/simpleTileset1.png"), 32, 32);
+
+		mainMusic = new Sound(Utils::FilePath("Content/Audio/Korobeiniki.wav"));
 	}
 
 	void TestEngine::Update(float framesPerSecond)
 	{
+		if (!mainMusic->IsPlayed())
+			mainMusic->Play(false);
 		if (Keyboard::IsDown(NENO_KEY_UP))
 			simpleSprite->y += 5;
 
@@ -92,7 +98,7 @@ namespace neno
 		simpleTexture->Draw(357 + 37 + 37, 128, 32, 32);
 
 		//simpleFont->Draw("Test", 256, 256, Color::Blue);
-		simpleFont->Draw(L"A co, jeśli żyjemy wiecznie?", 256, 256, Color::White);
+		simpleFont->Draw(L"Zażółć gęślą jaźń", 10, Application::currentConfig->screenHeight-50, Color::White);
 	}
 
 	void TestEngine::Resize(int width, int height)

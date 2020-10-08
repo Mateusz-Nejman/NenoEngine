@@ -13,5 +13,6 @@
 #include "Utils.h"
 #include "Sprite.h"
 #include "Font.h"
+#include "Sound.h"
 
 #endif

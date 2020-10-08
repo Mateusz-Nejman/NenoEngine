@@ -14,6 +14,7 @@ namespace neno
 		Sprite* simpleSprite;
 		Tileset* simpleTileset;
 		Font* simpleFont;
+		Sound* mainMusic;
 	public:
 		TestEngine();
 		~TestEngine();

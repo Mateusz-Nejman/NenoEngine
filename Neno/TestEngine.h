@@ -1,12 +1,12 @@
-#pragma once
-#include "Neno.h"
-#include <vector>
+﻿#include <Neno/Core/Neno.h>
 
-namespace neno
+using namespace Neno::Core;
+
+namespace Neno
 {
-	class TestEngine :
-		public Engine
+	class TestEngine : public Engine
 	{
+	private:
 		Texture* simpleTexture;
 		Texture* texBmp;
 		Texture* texPng;
@@ -16,8 +16,9 @@ namespace neno
 		Font* simpleFont;
 		Sound* mainMusic;
 	public:
-		TestEngine();
 		~TestEngine();
+
+		TestEngine();
 
 		void Create();
 

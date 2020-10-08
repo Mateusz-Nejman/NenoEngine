@@ -2,15 +2,16 @@
 //
 
 #include <iostream>
-#include "Neno.h"
+#include <Neno/Core/Neno.h>
 #include "TestEngine.h"
 
-using namespace neno;
+using namespace Neno;
+using namespace Neno::Core;
 int main(int argc, char* argv[])
 {
     std::cout << "Hello World!\n";
     TestEngine* engine = new TestEngine();
-    ApplicationConfig* config = new ApplicationConfig(1024, 768, false, true, &Color::CornflowerBlue);
+    ApplicationConfig* config = new ApplicationConfig("Neno TestEngine", 1024, 768, false, true, &Color::CornflowerBlue);
     Application::Start(engine, config, argc, argv);
 
     delete engine;

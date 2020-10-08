@@ -1,6 +1,6 @@
 ﻿#include "TestEngine.h"
 
-namespace neno
+namespace Neno
 {
 	TestEngine::~TestEngine()
 	{

@@ -167,7 +167,9 @@
     <ClInclude Include="Mouse.h" />
     <ClInclude Include="Neno.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="Point.h" />
     <ClInclude Include="Primitives.h" />
+    <ClInclude Include="Rectangle.h" />
     <ClInclude Include="Sound.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="Texture.h" />
@@ -189,7 +191,9 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="Point.cpp" />
     <ClCompile Include="Primitives.cpp" />
+    <ClCompile Include="Rectangle.cpp" />
     <ClCompile Include="Sound.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="Texture.cpp" />

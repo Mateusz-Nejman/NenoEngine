@@ -14,5 +14,7 @@
 #include "Sprite.h"
 #include "Font.h"
 #include "Sound.h"
+#include "Rectangle.h"
+#include "Point.h"
 
 #endif

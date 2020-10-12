@@ -79,6 +79,9 @@ namespace Neno
 
 		if (Keyboard::IsPressed('w'))
 			simpleSprite->angle += 45;
+
+		if (Mouse::LeftPressed())
+			std::cout << "Left Pressed " << Mouse::GetX() << "x" << Mouse::GetY() << std::endl; 
 	}
 
 	void TestEngine::Render()

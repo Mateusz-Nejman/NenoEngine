@@ -25,6 +25,7 @@ namespace Neno
         {
         public:
             static void Start(Engine* _engine, ApplicationConfig* config, int argc, char* argv[]);
+            static void Stop();
             static ApplicationConfig* currentConfig;
         private:
             static MEMORYSTATUSEX* memInfo;

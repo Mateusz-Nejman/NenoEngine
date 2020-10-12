@@ -50,6 +50,7 @@ namespace Neno
             Update();
             Render();
             Keyboard::AfterUpdate();
+            Mouse::AfterUpdate();
 
             if (currentTime - timebase >= 1.0)
             {
@@ -131,6 +132,12 @@ namespace Neno
 
             Font::Dispose();
             Sound::Dispose();
+        }
+
+        void Application::Stop()
+        {
+            if(glfwWindow != nullptr)
+                glfwDestroyWindow(glfwWindow);
         }
     }
 }

@@ -9,7 +9,6 @@ namespace Neno
 
 		Sound::~Sound()
 		{
-			sound->setIsPaused(true);
 			sound->drop();
 			sound = nullptr;
 		}
@@ -45,7 +44,7 @@ namespace Neno
 
 		void Sound::Dispose()
 		{
-			if (soundEngine == nullptr)
+			if (soundEngine != nullptr)
 			{
 				soundEngine->drop();
 				soundEngine = nullptr;

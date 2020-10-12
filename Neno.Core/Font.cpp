@@ -48,6 +48,8 @@ namespace Neno
 
                 characters.insert(std::pair<unsigned int, Character>(c, character));
             }
+
+            this->size = size;
         }
 
         void Font::Draw(std::wstring text, int x, int y, Color color)
@@ -95,14 +97,14 @@ namespace Neno
             }
         }
 
-        void Font::DrawMultiColor(std::wstring text, int x, int y, Color* colors)
+        void Font::DrawMultiColor(std::wstring text, int x, int y, std::vector<Color*> colors)
         {
             std::wstring::const_iterator c;
             int colorIndex = 0;
             for (c = text.begin(); c != text.end(); c++)
             {
                 Character ch = characters[*c];
-                Color color = colors[colorIndex];
+                Color color = *colors[colorIndex];
                 glColor4d(color.r, color.g, color.b, color.a);
                 FT_Load_Char(face, *c, FT_LOAD_RENDER);
                 float xpos = x + ch.OffsetX;
@@ -149,6 +151,11 @@ namespace Neno
 
                 delete freeTypeLibrary;
             }
+        }
+
+        int Font::GetSize()
+        {
+            return this->size;
         }
     }
 }

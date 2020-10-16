@@ -9,20 +9,13 @@ namespace Neno
 
 		Sound::~Sound()
 		{
+			sound->setIsPaused(true);
 			sound->drop();
 			sound = nullptr;
 		}
 
 		Sound::Sound(const char* filepath)
 		{
-			if (soundEngine == nullptr)
-			{
-				soundEngine = irrklang::createIrrKlangDevice();
-
-				if (!soundEngine)
-					std::cout << "Unable to create sound device" << std::endl;
-			}
-
 			sound = soundEngine->play2D(filepath, false, true);
 		}
 
@@ -40,6 +33,11 @@ namespace Neno
 		bool Sound::IsPlayed()
 		{
 			return !sound->getIsPaused();
+		}
+
+		void Sound::Initialize()
+		{
+			soundEngine = irrklang::createIrrKlangDevice();
 		}
 
 		void Sound::Dispose()

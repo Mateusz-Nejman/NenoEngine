@@ -5,6 +5,14 @@ namespace Neno
 {
 	namespace Core
 	{
+		Rectangle::~Rectangle()
+		{
+			delete position;
+			delete size;
+			position = nullptr;
+			size = nullptr;
+		}
+
 		Rectangle::Rectangle(int x, int y, int width, int height)
 		{
 			this->position = new Point(x, y);

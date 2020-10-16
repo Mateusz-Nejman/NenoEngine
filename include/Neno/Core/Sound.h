@@ -20,6 +20,7 @@ namespace Neno
 			void Play(bool looped = false);
 			void Pause();
 			bool IsPlayed();
+			static void Initialize();
 			static void Dispose();
 		};
 	}

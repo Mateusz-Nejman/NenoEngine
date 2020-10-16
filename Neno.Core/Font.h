@@ -33,8 +33,10 @@ namespace Neno
 			~Font();
 			Font(const char* filepath, int size, int firstChar = 32, int lastChar = 255);
 			void Draw(std::wstring text, int x, int y, Color color);
+			void Draw(std::string text, int x, int y, Color color);
 			void DrawMultiColor(std::wstring text, int x, int y, std::vector<Color*> colors);
 			int GetSize();
+			static void Initialize();
 			static void Dispose();
 		};
 	}

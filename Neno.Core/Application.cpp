@@ -20,15 +20,11 @@ namespace Neno
             Color bufferColor = *currentConfig->clearBufferColor;
             glClear(GL_COLOR_BUFFER_BIT);
             glClearColor(bufferColor.r, bufferColor.g, bufferColor.b, 1.0);
-
             glLoadIdentity();
-            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
             glEnable(GL_BLEND);
             glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
             glOrtho(0, currentConfig->screenWidth, 0, currentConfig->screenHeight, -1, 1);
+            glFlush();
             mainEngine->Render();
             glfwSwapBuffers(glfwWindow);
         }
@@ -88,6 +84,8 @@ namespace Neno
 
             Keyboard::Initialize();
             Mouse::Initialize();
+            Sound::Initialize();
+            Font::Initialize();
 
             delete mainEngine;
             mainEngine = engine;
@@ -123,6 +121,7 @@ namespace Neno
             glfwSetMouseButtonCallback(glfwWindow, ProcessMouse);
             glfwSetCursorPosCallback(glfwWindow, ProcessMousePos);
 
+            bool first = true;
             while (!glfwWindowShouldClose(glfwWindow))
             {
                 Loop();
@@ -138,6 +137,54 @@ namespace Neno
         {
             if(glfwWindow != nullptr)
                 glfwDestroyWindow(glfwWindow);
+        }
+
+        void Application::GLDebug()
+        {
+            GLfloat minFilter;
+            GLfloat magFilter;
+            GLfloat wrapS;
+            GLfloat wrapT;
+
+            glGetTexParameterfv(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, &minFilter);
+            glGetTexParameterfv(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, &magFilter);
+            glGetTexParameterfv(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, &wrapS);
+            glGetTexParameterfv(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, &wrapT);
+
+            std::cout << "GL_TEXTURE_MIN_FILTER: " << GetFilterText(minFilter) << std::endl;
+            std::cout << "GL_TEXTURE_MAG_FILTER: " << GetFilterText(magFilter) << std::endl;
+            std::cout << "GL_TEXTURE_WRAP_S:     " << GetFilterText(wrapS) << std::endl;
+            std::cout << "GL_TEXTURE_WRAP_T:     " << GetFilterText(wrapT) << std::endl;
+        }
+
+        const char* Application::GetFilterText(GLfloat filter)
+        {
+            if (filter == GL_LINEAR)
+                return "GL_LINEAR";
+            else if (filter == GL_REPEAT)
+                return "GL_REPEAT";
+            else if (filter == GL_NEAREST)
+                return "GL_NEAREST";
+            else if (filter == GL_NEAREST_MIPMAP_NEAREST)
+                return "GL_NEAREST_MIPMAP_NEAREST";
+            else if (filter == GL_NEAREST_MIPMAP_LINEAR)
+                return "GL_NEAREST_MIPMAP_LINEAR";
+            else if (filter == GL_LINEAR_MIPMAP_LINEAR)
+                return "GL_LINEAR_MIPMAP_LINEAR";
+            else if (filter == GL_LINEAR_MIPMAP_LINEAR)
+                return "GL_LINEAR_MIPMAP_LINEAR";
+            else if (filter == GL_CLAMP_TO_EDGE)
+                return "GL_CLAMP_TO_EDGE";
+            else if (filter == GL_CLAMP_TO_BORDER)
+                return "GL_CLAMP_TO_BORDER";
+            else if (filter == GL_MIRRORED_REPEAT)
+                return "GL_MIRRORED_REPEAT";
+            else if (filter == GL_MIRROR_CLAMP_TO_EDGE)
+                return "GL_MIRROR_CLAMP_TO_EDGE";
+            else if (filter == 0)
+                return "Zero";
+            else
+                return ("Other " + std::to_string(filter)).c_str();
         }
     }
 }

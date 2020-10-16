@@ -27,6 +27,7 @@ namespace Neno
             static void Start(Engine* _engine, ApplicationConfig* config, int argc, char* argv[]);
             static void Stop();
             static ApplicationConfig* currentConfig;
+            static void GLDebug();
         private:
             static MEMORYSTATUSEX* memInfo;
             static SYSTEMTIME* sysTime;
@@ -44,6 +45,7 @@ namespace Neno
             static void ProcessKeyboard(GLFWwindow* window, int key, int scancode, int action, int mods);
             static void ProcessMouse(GLFWwindow* window, int button, int action, int mods);
             static void ProcessMousePos(GLFWwindow* window, double xpos, double ypos);
+            static const char* GetFilterText(GLfloat filter);
         };
     }
 }

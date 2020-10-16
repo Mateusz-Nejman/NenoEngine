@@ -9,6 +9,7 @@ namespace Neno
 		class Rectangle
 		{
 		public:
+			~Rectangle();
 			Rectangle(int x, int y, int width, int height);
 			Point* position;
 			Point* size;

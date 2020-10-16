@@ -8,3 +8,4 @@ Prototype of game engine.
 - GLEW
 - FreeImage
 - FreeType
+- irrKlang
